@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723164101) do
+ActiveRecord::Schema.define(version: 20140724174210) do
 
   create_table "albums", force: true do |t|
-    t.string   "title"
+    t.string   "title",       limit: 50
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "public"
+    t.integer  "score"
   end
 
 end
