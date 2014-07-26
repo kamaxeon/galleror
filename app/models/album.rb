@@ -1,6 +1,6 @@
 class Album < ActiveRecord::Base
   validates :title, presence: true
-  validates :score, numericality: {
+  validates :rating, numericality: {
     only_integer: true,
     greater_than: 0,
     less_than: 6,

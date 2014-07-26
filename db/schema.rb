@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724174210) do
+ActiveRecord::Schema.define(version: 20140725172009) do
 
   create_table "albums", force: true do |t|
     t.string   "title",       limit: 50
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140724174210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "public"
-    t.integer  "score"
+    t.integer  "rating"
   end
 
 end
