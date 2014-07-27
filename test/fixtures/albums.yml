@@ -7,3 +7,57 @@ one:
 two:
   title: MyString
   description: MyText
+
+empty_album:
+  title: 
+  description:
+  public:
+  rating:
+
+album_without_title:
+  title: 
+  description: Some description
+  public:
+  rating:
+
+album_with_title_and_valid_rating:
+  title: Some cats
+  description:
+  public:
+  rating: 3
+
+album_with_title_and_rating_0_album:
+  title: Some dogs
+  description:
+  public:
+  rating: 0
+
+album_with_title_and_rating_10_album:
+  title: Some frogs
+  description:
+  public:
+  rating: 10
+
+minimum_valid_album:
+  title: Some horses
+  description: Happy horses
+  public: 
+  rating:
+
+valid_album_without_description_and_with_public:
+  title: Some butterflies
+  description:
+  public: false
+  rating: 5
+
+valid_album_without_public_and_with_description:
+  title: Some camels
+  description: Camels on Sahara
+  public:
+  rating: 3
+
+valid_album_with_all_the_values:
+  title: Some snakes
+  description: Dangerous snakes
+  public: true
+  rating: 4
