@@ -9,10 +9,8 @@
       <th colspan="4"></th>
     </tr>
   </thead>
-  <tbody>
-    <% @albums.each do |album| %>      
-        <%= render album -%>
-      <% end %>
+  <tbody>      
+      <%= render @albums -%>
   </tbody>
 </table>
 

@@ -10,5 +10,15 @@
   <%= @album.description %>
 </p>
 
+<p>
+  <strong>Public:</strong>
+  <%= @album.public %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= img_rating_tag @album.rating %>
+</p>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
