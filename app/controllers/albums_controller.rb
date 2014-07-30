@@ -1,15 +1,17 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  respond_to :html
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.published
   end
 
   # GET /albums/1
   # GET /albums/1.json
   def show
+    @photos = @album.photos
   end
 
   # GET /albums/new
@@ -24,41 +26,22 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
-
-    respond_to do |format|
-      if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
-        format.json { render :show, status: :created, location: @album }
-      else
-        format.html { render :new }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
-      end
-    end
+    @album = Album.create(album_params)
+    respond_with(@album, location: albums_url)
   end
 
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
-    respond_to do |format|
-      if @album.update(album_params)
-        format.html { redirect_to albums_url, notice: 'Album was successfully updated.' }
-        format.json { render :show, status: :ok, location: @album }
-      else
-        format.html { render :edit }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
-      end
-    end
+    @album.update(album_params)
+    respond_with(@album, location: albums_url)
   end
 
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
     @album.destroy
-    respond_to do |format|
-      format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_with(@album)
   end
 
   private

@@ -1,9 +1,10 @@
       <tr>    
         <td><%= album.title %></td>
         <td><%= album.public %></td>
-        <td><%= img_rating_tag album.rating %> </td>
+        <td><%= raw img_rating_tag(album.rating) %> </td>
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add new photo', new_album_photo_url(album.id) %></td>
       </tr>
 

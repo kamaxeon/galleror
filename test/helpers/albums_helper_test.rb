@@ -27,7 +27,7 @@ class AlbumsHelperTest < ActionView::TestCase
 
   def test_img_rating_tag_with_2_repetitions
     res = img_rating_tag 2
-    excepted = "<img alt=\"Start\" height=\"10\" src=\"/img/start.png\" width=\"16\" /><img alt=\"Start\" height=\"10\" src=\"/img/start.png\" width=\"16\" />"
+    excepted = "<img alt=\"Start\" height=\"10\" src=\"/images/start.png\" width=\"16\" /><img alt=\"Start\" height=\"10\" src=\"/images/start.png\" width=\"16\" />"
     assert_equal(excepted, res)
   end
 

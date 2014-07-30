@@ -17,8 +17,27 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= img_rating_tag @album.rating %>
+  <%= raw img_rating_tag @album.rating %>
 </p>
+
+<% if !@album.photos.empty? -%>
+
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Image</th>
+    </thead>
+    <tbody>
+      <% @photos.each do |photo|  %>
+        <%= render partial: 'album_photo', object: photo, as: 'photo' %>
+      <% end %>
+    </tbody>
+  </table>
+<% else -%>
+
+  <h1>Empty album!!!!!</h1>
+
+<% end -%>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

@@ -2,14 +2,14 @@ require 'test_helper'
 
 class AlbumTest < ActiveSupport::TestCase
 
-
-  def test_0_insert_album
+  def test_insert_album
     cont = Album.count
     assert_equal(cont, Album.count)
     album = albums :minimum_valid_album
     album.save
     assert_equal(++cont, Album.count)
   end
+
   def test_album_can_not_be_empty
     album = albums :empty_album
     assert_not album.save
@@ -24,6 +24,7 @@ class AlbumTest < ActiveSupport::TestCase
     album = albums :album_with_title_and_valid_rating
     assert album.save
   end
+  
   def test_album_with_rating_smaller_than_0_and_title
     album = albums :album_with_title_and_rating_0_album
     assert !album.save
