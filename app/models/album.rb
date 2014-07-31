@@ -14,4 +14,5 @@ class Album < ActiveRecord::Base
     #scope: published, where(public:true) Rails 3
 
     has_many :photos
+    belongs_to :user
 end

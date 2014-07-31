@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :new, :destroy]
   before_action :set_album, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
@@ -26,7 +27,9 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.create(album_params)
+    @album = Album.new(album_params)
+    @album.user = current_user
+    @album.save
     respond_with(@album, location: albums_url)
   end
 
@@ -50,6 +53,9 @@ class AlbumsController < ApplicationController
       @album = Album.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
       params.require(:album).permit(:title, :description, :public, :rating)

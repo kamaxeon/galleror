@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
+  before_action :set_album
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html
   # GET /photos
   # GET /photos.json
   def index
@@ -14,7 +15,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @photo = @album.photos.build
   end
 
   # GET /photos/1/edit
@@ -24,18 +25,8 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
-    @photo.album = @album
-
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    @photo = @album.photos.create(photo_params)
+    respond_with(@photo, location: albums_url)
   end
 
   # PATCH/PUT /photos/1
@@ -66,6 +57,9 @@ class PhotosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
+    end
+
+    def set_album
       @album = Album.find(params[:album_id])
     end
 

@@ -1,4 +1,4 @@
       <tr>    
         <td><%= photo.title %></td>
-        <td><%= photo.image %></td>
+        <td><%=  image_tag photo.image.url(:thumb) %></td>
       </tr>
